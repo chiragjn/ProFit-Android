@@ -1,22 +1,24 @@
 package com.modprobe.profit;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class LogSessionFragment extends Fragment {
 
@@ -55,6 +57,57 @@ public class LogSessionFragment extends Fragment {
 			}
 		};
 		lv.setAdapter(adapter);
+
+		lv.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						getActivity());
+				builder.setTitle("Enter Exertion Level");
+
+				// Set up the input
+				final EditText input = new EditText(getActivity());
+				// Specify the type of input expected; this, for example,
+				// sets the input as a password, and will mask the text
+				input.setInputType(InputType.TYPE_CLASS_NUMBER);
+				builder.setView(input);
+
+				// Set up the buttons
+				builder.setPositiveButton("Log",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								int intensity = Integer.parseInt(input
+										.getText().toString());
+								// dialog.cancel();
+								// getActivity()
+								// .getSupportFragmentManager()
+								// .beginTransaction()
+								// .addToBackStack(null)
+								// .add(R.id.container,
+								// new FeedbackFragment(weight))
+								// .addToBackStack(null).commit();
+
+							}
+						});
+				builder.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								dialog.cancel();
+							}
+						});
+
+				builder.show();
+
+			}
+
+		});
 		Button createNewButton = (Button) rootView
 				.findViewById(R.id.create_new);
 		createNewButton.setOnClickListener(new OnClickListener() {
@@ -62,8 +115,8 @@ public class LogSessionFragment extends Fragment {
 			@Override
 			public void onClick(View arg0) {
 				AddSessionFragment asf = new AddSessionFragment();
-				getActivity().getSupportFragmentManager().beginTransaction().add(R.id.container, asf)
-						.addToBackStack(null).commit();
+				getActivity().getSupportFragmentManager().beginTransaction()
+						.add(R.id.container, asf).addToBackStack(null).commit();
 
 			}
 		});
@@ -82,6 +135,4 @@ public class LogSessionFragment extends Fragment {
 		super.onResume();
 	}
 
-	
-	
 }
