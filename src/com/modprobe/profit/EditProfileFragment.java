@@ -51,7 +51,6 @@ public class EditProfileFragment extends Fragment {
 	private Button updateButton;
 	private String bodyTypeArr[] = { "Slim", "Fit", "Plum", "Obese" };
 	private String updatedImagePath;
-
 	public EditProfileFragment() {
 	}
 

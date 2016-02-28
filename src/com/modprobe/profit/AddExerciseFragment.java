@@ -6,6 +6,8 @@ import java.util.List;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +70,7 @@ public class AddExerciseFragment extends Fragment {
 					selectedText.setTextColor(Color.WHITE);
 				}
 				SubCatDataSource scds = new SubCatDataSource(getActivity());
+				scds.open();
 				currentSubCategories = scds.getSubCats(allCategories.get(pos));
 				scds.close();
 				ArrayList<String> tempSubCategories = new ArrayList<String>();
@@ -114,7 +117,8 @@ public class AddExerciseFragment extends Fragment {
 			@Override
 			public void onClick(View arg0) {
 				ActivityDataSource ads = new ActivityDataSource(getActivity());
-				SubCat parent = currentSubCategories.get(subCategorySpinner
+				ads.open();
+				SubCat subcat = currentSubCategories.get(subCategorySpinner
 						.getSelectedItemPosition());
 				int duration = 0;
 				if (durationEditText.getText().toString() == null
@@ -127,14 +131,31 @@ public class AddExerciseFragment extends Fragment {
 							.toString());
 				}
 				int intensity = intensitySlider.getValue();
-				int cal_fac = parent._exertion;
+				int cal_fac = subcat._exertion;
 				int fitons = Helper.getFitons(duration, intensity, cal_fac);
-				Activity justCreatedActivity = ads.createActivity(parent,
+				Activity justCreatedActivity = ads.createActivity(subcat,
 						duration, fitons, intensity,
 						(int) (Math.random() * 1000000));
 				ads.close();
 				// TODO
-				// take to delta screen
+				FragmentManager fragmentManager = getActivity()
+						.getSupportFragmentManager();
+				FragmentTransaction fragmentTransaction = fragmentManager
+						.beginTransaction();
+				fragmentTransaction.remove(AddExerciseFragment.this);
+				fragmentManager.popBackStack(null,
+						FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				MainActivityFragment mainActivityFragment = new MainActivityFragment();
+				fragmentTransaction
+						.add(R.id.container, mainActivityFragment)
+						.replace(
+								R.id.container,
+								new FeedbackFragment(intensity, Helper
+										.getFitons(duration, intensity,
+												subcat._exertion),
+										subcat._parent._name, subcat._name))
+						.addToBackStack(null).commit();
+
 			}
 		});
 		return rootView;

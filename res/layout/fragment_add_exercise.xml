@@ -49,7 +49,7 @@
                     android:layout_gravity="left"
                     android:layout_marginBottom="3dp"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:text="Select a Category"
                     android:textColor="@color/white"
                     android:textSize="13sp" />
@@ -68,6 +68,7 @@
                     android:layout_gravity="left"
                     android:layout_marginBottom="3dp"
                     android:layout_marginLeft="4dp"
+                    android:layout_marginTop="15dp"
                     android:text="Select a Subcategory"
                     android:textColor="@color/white"
                     android:textSize="13sp" />
@@ -111,6 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    app:sl_alwaysFillThumb="true"
                     app:sl_discreteMode="true"
                     app:sl_interpolator="@android:interpolator/accelerate_decelerate"
                     app:sl_maxValue="10"
@@ -126,8 +128,7 @@
                     app:sl_trackSize="2dp"
                     app:sl_transformAnimDuration="100"
                     app:sl_travelAnimDuration="100"
-                    app:sl_value="5"
-                    app:sl_alwaysFillThumb="true" />
+                    app:sl_value="5" />
             </LinearLayout>
         </ScrollView>
 

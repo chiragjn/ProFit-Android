@@ -60,47 +60,7 @@ public class MainActivity extends AppCompatActivity {
 			setupReciever();// Callback
 			setupSharedPref();// Basic Account Setup
 
-			ActivityDataSource ads = new ActivityDataSource(this);
-
-			CategoryDataSource cds = new CategoryDataSource(this);
-			cds.open();
-			Category cc = cds.createCategory("Cardio", 6, 0);
-			Category cc1 = cds.createCategory("Sports", 7, 1);
-			Category cc2 = cds.createCategory("Gym", 8, 2);
-			cds.close();
-
-			SubCatDataSource sds = new SubCatDataSource(this);
-			sds.open();
-			SubCat ss = sds.createSubCat(cc1, "Tennis", 210, 0);
-			SubCat ss1 = sds.createSubCat(cc1, "Badminton", 135, 1);
-			SubCat ss2 = sds.createSubCat(cc, "Walking", 135, 3);
-			SubCat ss3 = sds.createSubCat(cc, "Running", 240, 4);
-			SubCat ss4 = sds.createSubCat(cc2, "Weight Lifting", 90, 5);
-			SubCat ss5 = sds.createSubCat(cc2, "Yoga", 120, 6);
-			sds.close();
-
-			ads.open();
-			ads.createActivity(ss, 600, 100, 6, 0);
-			ads.createActivity(ss1, 600, 150, 5, 1);
-			ads.createActivity(ss2, 600, 130, 8, 2);
-			ads.createActivity(ss5, 600, 160, 10, 100);
-			ads.createActivity(ss4, 600, 200, 10, 3);
-			ads.createActivity(ss3, 600, 170, 4, 4);
-			ads.close();
-
-			GoalDataSource gds = new GoalDataSource(this);
-			gds.open();
-			gds.createGoal("Running", "500,500,500", 0, 1);
-			gds.createGoal("Swimming", "250,250,250", 1, 1);
-			gds.createGoal("Marathon", "400,480,420", 3, 1);
-			gds.createGoal("Weight Loss", "600,600,650", 4, 0);
-			gds.close();
-			WeightLogDataSource wlds = new WeightLogDataSource(this);
-			wlds.open();
-			wlds.createWeightLog("26/2/16", 55, 0);
-			wlds.createWeightLog("27/2/16", 59, 1);
-			wlds.createWeightLog("28/2/16", 56, 2);
-			wlds.close();
+			seedDb();
 		}
 		if (!AppController.getInstance().prefs.getBoolean("profile_completed",
 				false)) {
@@ -357,5 +317,65 @@ public class MainActivity extends AppCompatActivity {
 		FragmentTransaction fragmentTransaction = fragmentManager
 				.beginTransaction();
 		fragmentTransaction.add(R.id.container, mainActivityFragment).commit();
+	}
+	
+	
+	private void seedDb() {
+		// TODO Auto-generated method stub
+		
+		ActivityDataSource ads = new ActivityDataSource(this);
+		CategoryDataSource cds = new CategoryDataSource(this);
+		cds.open();
+		Category cc = cds.createCategory("Cardio", 6, 0);
+		Category cc1 = cds.createCategory("Sports", 7, 1);
+		Category cc2 = cds.createCategory("Gym", 8, 2);
+		cds.close();
+
+		SubCatDataSource sds = new SubCatDataSource(this);
+		sds.open();
+		SubCat ss = sds.createSubCat(cc1, "Tennis", 210, 0);
+		SubCat ss1 = sds.createSubCat(cc1, "Badminton", 135, 1);
+		SubCat ss2 = sds.createSubCat(cc, "Walking", 135, 3);
+		SubCat ss3 = sds.createSubCat(cc, "Running", 240, 4);
+		SubCat ss4 = sds.createSubCat(cc2, "Weight Lifting", 90, 5);
+		SubCat ss5 = sds.createSubCat(cc2, "Yoga", 120, 6);
+		sds.close();
+
+		ads.open();
+		ads.createActivity(ss, 60, Helper.getFitons(60, 6, ss._exertion), 6, 0);
+		ads.createActivity(ss1, 30, Helper.getFitons(30, 5, ss1._exertion), 5, 1);
+		ads.createActivity(ss2, 120, Helper.getFitons(120, 8, ss2._exertion), 8, 2);
+		ads.createActivity(ss5, 45, Helper.getFitons(45, 10, ss5._exertion), 10, 100);
+		ads.createActivity(ss4, 90, Helper.getFitons(90, 10, ss4._exertion), 10, 3);
+		ads.createActivity(ss3, 100, Helper.getFitons(100, 4, ss3._exertion), 4, 4);
+		ads.close();
+
+		GoalDataSource gds = new GoalDataSource(this);
+		gds.open();
+		gds.createGoal("5k Marathon", "300,200,100", 0, 1);
+		gds.createGoal("Mr Olympiad", "250,150,600", 1, 1);
+		gds.createGoal("10k Marathon", "400,300,200", 3, 0);
+		gds.createGoal("Weight Loss", "350,150,150", 4, 0);
+		gds.close();
+		
+		SessionDataSource ssds = new SessionDataSource(this);
+		ssds.open();
+		Session sess = ssds.createSession("monday workout", 0);
+		ssds.close();
+		
+		SessionActivityDataSource sads = new SessionActivityDataSource(this);
+		sads.open();
+		sads.createSessionActivity(sess, ss4, 20, 0);
+		sads.createSessionActivity(sess, ss3, 30, 1);
+		sads.createSessionActivity(sess, ss5, 10, 2);
+		sads.close();
+		
+		WeightLogDataSource wlds = new WeightLogDataSource(this);
+		wlds.open();
+		wlds.createWeightLog("26/2/16", 55, 0);
+		wlds.createWeightLog("27/2/16", 59, 1);
+		wlds.createWeightLog("28/2/16", 56, 2);
+		wlds.close();
+		
 	}
 }

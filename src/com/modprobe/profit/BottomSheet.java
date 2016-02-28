@@ -3,8 +3,8 @@ package com.modprobe.profit;
 public class BottomSheet {
 
 	public enum BottomSheetMenuType {
-		EMAIL(R.drawable.weightlifting, "Log Exercise"), ACCOUNT(
-				R.drawable.todolist, "Log Session"), SETTING(
+		ACTIVITY(R.drawable.weightlifting, "Log Activity"), SESSION(
+				R.drawable.todolist, "Log Session"), WEIGHT(
 				R.drawable.weighing_scale, "Log Weight");
 
 		int resId;

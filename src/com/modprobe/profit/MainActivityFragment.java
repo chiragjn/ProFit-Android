@@ -2,6 +2,7 @@ package com.modprobe.profit;
 
 import java.util.ArrayList;
 
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,12 +12,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -90,11 +94,11 @@ public class MainActivityFragment extends Fragment {
 				.findViewById(R.id.fab);
 		ArrayList<BottomSheet> bottomSheets = new ArrayList<>();
 		bottomSheets.add(BottomSheet.to().setBottomSheetMenuType(
-				BottomSheet.BottomSheetMenuType.EMAIL));
+				BottomSheet.BottomSheetMenuType.ACTIVITY));
 		bottomSheets.add(BottomSheet.to().setBottomSheetMenuType(
-				BottomSheet.BottomSheetMenuType.ACCOUNT));
+				BottomSheet.BottomSheetMenuType.SESSION));
 		bottomSheets.add(BottomSheet.to().setBottomSheetMenuType(
-				BottomSheet.BottomSheetMenuType.SETTING));
+				BottomSheet.BottomSheetMenuType.WEIGHT));
 		BottomSheetAdapter bottomSheetAdapter = new BottomSheetAdapter(
 				getActivity(), bottomSheets);
 		mMenuList.setAdapter(bottomSheetAdapter);
@@ -124,8 +128,43 @@ public class MainActivityFragment extends Fragment {
 							.addToBackStack(null).commit();
 					break;
 				case 1:
+					AddSessionFragment asf = new AddSessionFragment();
+					fragmentTransaction.replace(R.id.container, asf)
+							.addToBackStack(null).commit();
 					break;
 				case 2:
+					// TODO Auto-generated method stub
+					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+					builder.setTitle("Please enter your weight");
+
+					// Set up the input
+					final EditText input = new EditText(getActivity());
+					// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+					input.setInputType(InputType.TYPE_CLASS_NUMBER);
+					builder.setView(input);
+
+					// Set up the buttons
+					builder.setPositiveButton("Log", new DialogInterface.OnClickListener() { 
+					    @Override
+					    public void onClick(DialogInterface dialog, int which) {
+					    	int weight = Integer.parseInt(input.getText().toString());
+							WeightLogDataSource wlds = new WeightLogDataSource(getActivity());
+							wlds.open();
+							wlds.createWeightLog("28/2/16", weight, (int)(Math.random() * 50002));
+							wlds.close();
+							//dialog.cancel();
+							getActivity().getSupportFragmentManager().beginTransaction()
+							.replace(R.id.container, new FeedbackFragment(weight)).addToBackStack(null).commit();
+					    }
+					});
+					builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+					    @Override
+					    public void onClick(DialogInterface dialog, int which) {
+					        dialog.cancel();
+					    }
+					});
+
+					builder.show();
 					break;
 				default:
 					break;
