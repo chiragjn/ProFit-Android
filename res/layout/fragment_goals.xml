@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grape"
+            android:padding="10dp"
+            android:text="Your Current Goals"
+            android:textColor="#fff"
+            android:textSize="22sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="2dp"
+            android:background="?attr/colorAccent" />
+
+        <ListView
+            android:id="@+id/listViewGoalsNow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/transparent"
+            android:dividerHeight="5dp"
+            android:paddingTop="5dp" >
+        </ListView>
+
+        <TextView
+            android:id="@+id/newGoalTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grape"
+            android:padding="10dp"
+            android:text="Add a new Goal"
+            android:textColor="#fff"
+            android:textSize="22sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="2dp"
+            android:background="?attr/colorAccent" />
+
+        <ListView
+            android:id="@+id/listViewGoalsFuture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/transparent"
+            android:dividerHeight="5dp"
+            android:paddingTop="5dp" >
+        </ListView>
+    </LinearLayout>
+
+</ScrollView>

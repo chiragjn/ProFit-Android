@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:layoutDirection="locale"
+    android:orientation="vertical"
+    android:textDirection="locale"
+    android:textSize="24sp"
+    app:slm_headerDisplay="inline|sticky"
+    app:slm_isHeader="true" >
+
+    <TextView
+        android:id="@+id/textViewSubcat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:text="Swimming"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewCat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="#ffffff"
+        android:text="Sport" />
+
+    <TextView
+        android:id="@+id/textViewFittons"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/textViewMisc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="#ffffff" />
+
+</LinearLayout>

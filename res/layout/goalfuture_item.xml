@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="?attr/colorPrimaryDark"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/textViewFutureGoalName"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="Goal Name"
+        android:textColor="#fff"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/addGoalButton"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="#00000000"
+        android:textColor="?attr/colorAccent"
+        android:text="+"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:minHeight="0dp"/>
+
+</LinearLayout>

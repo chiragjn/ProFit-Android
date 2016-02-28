@@ -1,0 +1,211 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grape" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:orientation="vertical"
+        android:weightSum="100" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="88" >
+
+            <LinearLayout
+                android:id="@+id/mainContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:gravity="start"
+                    android:text="EDIT PROFILE"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="?attr/colorAccent" />
+
+                <com.pkmmte.view.CircularImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="Avatar"
+                    android:src="@drawable/user_profile"
+                    app:civ_border="true"
+                    app:civ_borderColor="?attr/colorAccent"
+                    app:civ_borderWidth="2dp"
+                    app:civ_selector="true"
+                    app:civ_selectorColor="#4403a9f4"
+                    app:civ_selectorStrokeColor="?attr/colorAccent"
+                    app:civ_selectorStrokeWidth="4dp"
+                    app:civ_shadow="true" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/fullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Full Name"
+                        android:imeActionLabel="Full Name"
+                        android:imeOptions="actionUnspecified"
+                        android:textColor="@color/white" />
+
+                    <requestFocus />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Username"
+                        android:imeActionLabel="Username"
+                        android:imeOptions="actionUnspecified"
+                        android:textColor="@color/white" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Email address"
+                        android:imeActionLabel="Email address"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/white" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Age"
+                        android:imeActionLabel="Age"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/height"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Height (in centimeters)"
+                        android:imeActionLabel="Height (in centimeters)"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Weight (in kilograms)"
+                        android:imeActionLabel="Weight (in kilograms)"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tVStaticSmallLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="4dp"
+                    android:text="Body Type"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/body_type_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp" >
+                </Spinner>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/diseases"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Diseases (comma separated)"
+                        android:imeActionLabel="Diseases (comma separated)"
+                        android:imeOptions="actionUnspecified"
+                        android:maxLines="5"
+                        android:textColor="@color/white" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="12"
+            android:padding="4dp" >
+
+            <Button
+                android:id="@+id/profile_save"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="?attr/colorAccent"
+                android:text="UPDATE PROFILE"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
