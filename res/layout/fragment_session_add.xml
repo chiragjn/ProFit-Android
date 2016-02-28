@@ -45,6 +45,15 @@
                 android:textColor="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="start"
+            android:text="ACTIVITIES :"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
         <ListView
             android:id="@+id/exercises_list_view"
             android:layout_width="match_parent"

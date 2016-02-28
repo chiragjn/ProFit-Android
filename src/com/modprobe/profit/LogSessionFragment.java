@@ -3,6 +3,7 @@ package com.modprobe.profit;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,7 +28,7 @@ public class LogSessionFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.fragment_session_add,
+		View rootView = inflater.inflate(R.layout.fragment_session_log,
 				container, false);
 
 		ListView lv = (ListView) rootView.findViewById(R.id.sessions_list_view);
@@ -61,13 +62,26 @@ public class LogSessionFragment extends Fragment {
 			@Override
 			public void onClick(View arg0) {
 				AddSessionFragment asf = new AddSessionFragment();
-				getActivity().getSupportFragmentManager().beginTransaction()
-						.replace(R.id.container, asf).addToBackStack(null)
-						.commit();
+				getActivity().getSupportFragmentManager().beginTransaction().add(R.id.container, asf)
+						.addToBackStack(null).commit();
 
 			}
 		});
 		return rootView;
 	}
 
+	@Override
+	public void onAttach(Activity activity) {
+		// TODO Auto-generated method stub
+		super.onAttach(activity);
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+
+	
+	
 }
