@@ -147,9 +147,8 @@ public class AddExerciseFragment extends Fragment {
 						FragmentManager.POP_BACK_STACK_INCLUSIVE);
 				MainActivityFragment mainActivityFragment = new MainActivityFragment();
 				fragmentTransaction
-						.add(R.id.container, mainActivityFragment)
-						.replace(
-								R.id.container,
+						.remove(AddExerciseFragment.this)
+						.add(R.id.container,
 								new FeedbackFragment(intensity, Helper
 										.getFitons(duration, intensity,
 												subcat._exertion),

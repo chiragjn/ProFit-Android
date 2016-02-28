@@ -102,7 +102,7 @@ public class AddSessionFragment extends Fragment {
 					}
 					sads.close();
 				}
-					//TODO GTFO NOW
+					getActivity().getSupportFragmentManager().beginTransaction().remove(AddSessionFragment.this).commit();
 			}
 		});
 

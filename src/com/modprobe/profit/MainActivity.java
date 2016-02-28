@@ -47,9 +47,7 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		if (!checkPermissions()) {
-			requestPermissions();
-		}
+
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setElevation(0);
@@ -73,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
 			// Use chirags activity main_xml,
 			chirags_onCreate();
 		}
+		if (!checkPermissions()) {
+			requestPermissions();
+		}
 	}
 
 	@Override
@@ -82,10 +83,6 @@ public class MainActivity extends AppCompatActivity {
 				mRegistrationBroadcastReceiver,
 				new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
 		super.onResume();
-
-		// This ensures that if the user denies the permissions then uses
-		// Settings to re-enable
-		// them, the app will start working.
 		buildFitnessClient();
 	}
 
@@ -318,11 +315,10 @@ public class MainActivity extends AppCompatActivity {
 				.beginTransaction();
 		fragmentTransaction.add(R.id.container, mainActivityFragment).commit();
 	}
-	
-	
+
 	private void seedDb() {
 		// TODO Auto-generated method stub
-		
+
 		ActivityDataSource ads = new ActivityDataSource(this);
 		CategoryDataSource cds = new CategoryDataSource(this);
 		cds.open();
@@ -343,11 +339,16 @@ public class MainActivity extends AppCompatActivity {
 
 		ads.open();
 		ads.createActivity(ss, 60, Helper.getFitons(60, 6, ss._exertion), 6, 0);
-		ads.createActivity(ss1, 30, Helper.getFitons(30, 5, ss1._exertion), 5, 1);
-		ads.createActivity(ss2, 120, Helper.getFitons(120, 8, ss2._exertion), 8, 2);
-		ads.createActivity(ss5, 45, Helper.getFitons(45, 10, ss5._exertion), 10, 100);
-		ads.createActivity(ss4, 90, Helper.getFitons(90, 10, ss4._exertion), 10, 3);
-		ads.createActivity(ss3, 100, Helper.getFitons(100, 4, ss3._exertion), 4, 4);
+		ads.createActivity(ss1, 30, Helper.getFitons(30, 5, ss1._exertion), 5,
+				1);
+		ads.createActivity(ss2, 120, Helper.getFitons(120, 8, ss2._exertion),
+				8, 2);
+		ads.createActivity(ss5, 45, Helper.getFitons(45, 10, ss5._exertion),
+				10, 100);
+		ads.createActivity(ss4, 90, Helper.getFitons(90, 10, ss4._exertion),
+				10, 3);
+		ads.createActivity(ss3, 100, Helper.getFitons(100, 4, ss3._exertion),
+				4, 4);
 		ads.close();
 
 		GoalDataSource gds = new GoalDataSource(this);
@@ -357,25 +358,25 @@ public class MainActivity extends AppCompatActivity {
 		gds.createGoal("10k Marathon", "400,300,200", 3, 0);
 		gds.createGoal("Weight Loss", "350,150,150", 4, 0);
 		gds.close();
-		
+
 		SessionDataSource ssds = new SessionDataSource(this);
 		ssds.open();
 		Session sess = ssds.createSession("monday workout", 0);
 		ssds.close();
-		
+
 		SessionActivityDataSource sads = new SessionActivityDataSource(this);
 		sads.open();
 		sads.createSessionActivity(sess, ss4, 20, 0);
 		sads.createSessionActivity(sess, ss3, 30, 1);
 		sads.createSessionActivity(sess, ss5, 10, 2);
 		sads.close();
-		
+
 		WeightLogDataSource wlds = new WeightLogDataSource(this);
 		wlds.open();
 		wlds.createWeightLog("26/2/16", 55, 0);
 		wlds.createWeightLog("27/2/16", 59, 1);
 		wlds.createWeightLog("28/2/16", 56, 2);
 		wlds.close();
-		
+
 	}
 }

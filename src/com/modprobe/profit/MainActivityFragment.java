@@ -119,50 +119,61 @@ public class MainActivityFragment extends Fragment {
 					int position, long id) {
 				FragmentManager fragmentManager = getActivity()
 						.getSupportFragmentManager();
-				FragmentTransaction fragmentTransaction = fragmentManager
+				 FragmentTransaction fragmentTransaction = fragmentManager
 						.beginTransaction();
+				 mBottomSheetLayout.contractFab();
 				switch (position) {
 				case 0:
 					AddExerciseFragment aef = new AddExerciseFragment();
-					fragmentTransaction.replace(R.id.container, aef)
+					fragmentTransaction.addToBackStack(null).add(R.id.container, aef)
 							.addToBackStack(null).commit();
 					break;
 				case 1:
-					AddSessionFragment asf = new AddSessionFragment();
-					fragmentTransaction.replace(R.id.container, asf)
+					LogSessionFragment asf = new LogSessionFragment();
+					fragmentTransaction.addToBackStack(null).add(R.id.container, asf)
 							.addToBackStack(null).commit();
 					break;
 				case 2:
 					// TODO Auto-generated method stub
-					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+					AlertDialog.Builder builder = new AlertDialog.Builder(
+							getActivity());
 					builder.setTitle("Please enter your weight");
 
 					// Set up the input
 					final EditText input = new EditText(getActivity());
-					// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+					// Specify the type of input expected; this, for example,
+					// sets the input as a password, and will mask the text
 					input.setInputType(InputType.TYPE_CLASS_NUMBER);
 					builder.setView(input);
 
 					// Set up the buttons
-					builder.setPositiveButton("Log", new DialogInterface.OnClickListener() { 
-					    @Override
-					    public void onClick(DialogInterface dialog, int which) {
-					    	int weight = Integer.parseInt(input.getText().toString());
-							WeightLogDataSource wlds = new WeightLogDataSource(getActivity());
-							wlds.open();
-							wlds.createWeightLog("28/2/16", weight, (int)(Math.random() * 50002));
-							wlds.close();
-							//dialog.cancel();
-							getActivity().getSupportFragmentManager().beginTransaction()
-							.replace(R.id.container, new FeedbackFragment(weight)).addToBackStack(null).commit();
-					    }
-					});
-					builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-					    @Override
-					    public void onClick(DialogInterface dialog, int which) {
-					        dialog.cancel();
-					    }
-					});
+					builder.setPositiveButton("Log",
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									int weight = Integer.parseInt(input
+											.getText().toString());
+									WeightLogDataSource wlds = new WeightLogDataSource(
+											getActivity());
+									wlds.open();
+									wlds.createWeightLog("28/2/16", weight,
+											(int) (Math.random() * 50002));
+									wlds.close();
+									// dialog.cancel();
+									getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).add(R.id.container,new FeedbackFragment(weight))
+									.addToBackStack(null).commit();
+
+								}
+							});
+					builder.setNegativeButton("Cancel",
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									dialog.cancel();
+								}
+							});
 
 					builder.show();
 					break;
