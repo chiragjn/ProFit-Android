@@ -240,7 +240,7 @@ public class EditProfileFragment extends Fragment {
 			File profile_image = createTemporaryFile("profile_image", "jpg");
 			FileOutputStream outStream = new FileOutputStream(profile_image);
 			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
-			bitmap.recycle();
+			//bitmap.recycle();
 			outStream.flush();
 			outStream.close();
 			updatedImagePath = profile_image.getAbsolutePath();
@@ -260,7 +260,7 @@ public class EditProfileFragment extends Fragment {
 				Bitmap myBitmap = BitmapFactory.decodeFile(imgFile
 						.getAbsolutePath());
 				civ.setImageBitmap(myBitmap);
-				myBitmap.recycle();
+				//myBitmap.recycle();
 			}
 
 		} catch (Exception e) {

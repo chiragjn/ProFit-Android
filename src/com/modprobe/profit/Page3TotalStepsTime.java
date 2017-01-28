@@ -26,11 +26,11 @@ public class Page3TotalStepsTime extends Fragment {
 		// Create background track
 		arcView.addSeries(new SeriesItem.Builder(Color.argb(255, 53, 45, 78))
 				.setRange(0, 100, 100).setInitialVisibility(true)
-				.setLineWidth(32f).build());
+				.setLineWidth(20f).build());
 
 		// Create data series track
 		SeriesItem seriesItem1 = new SeriesItem.Builder(Color.argb(255, 252,
-				108, 81)).setRange(0, 100, 0).setLineWidth(32f).build();
+				108, 81)).setRange(0, 100, 0).setLineWidth(20f).build();
 
 		int series1Index = arcView.addSeries(seriesItem1);
 		arcView.addEvent(new DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW,
@@ -45,11 +45,11 @@ public class Page3TotalStepsTime extends Fragment {
 		// Create background track
 		arcView1.addSeries(new SeriesItem.Builder(Color.argb(255, 53, 45, 78))
 				.setRange(0, 100, 100).setInitialVisibility(true)
-				.setLineWidth(32f).build());
+				.setLineWidth(20f).build());
 
 		// Create data series track
 		SeriesItem seriesItem1a1 = new SeriesItem.Builder(Color.argb(255, 255,
-				206, 84)).setRange(0, 100, 0).setLineWidth(32f).build();
+				206, 84)).setRange(0, 100, 0).setLineWidth(20f).build();
 
 		int series1Indexa1 = arcView1.addSeries(seriesItem1a1);
 
@@ -62,11 +62,11 @@ public class Page3TotalStepsTime extends Fragment {
 		// Create background track
 		arcView2.addSeries(new SeriesItem.Builder(Color.argb(255, 53, 45, 78))
 				.setRange(0, 100, 100).setInitialVisibility(true)
-				.setLineWidth(32f).build());
+				.setLineWidth(20f).build());
 
 		// Create data series track
 		SeriesItem seriesItem1a2 = new SeriesItem.Builder(Color.argb(255, 72,
-				207, 173)).setRange(0, 100, 0).setLineWidth(32f).build();
+				207, 173)).setRange(0, 100, 0).setLineWidth(20f).build();
 
 		int series1Indexa2 = arcView2.addSeries(seriesItem1a2);
 

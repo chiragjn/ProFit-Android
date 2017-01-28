@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -25,6 +26,7 @@ import android.support.v7.widget.Toolbar;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -49,8 +51,20 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		TextView toolbarTitle = (TextView) toolbar
+				.findViewById(R.id.toolbar_title);
+		Typeface khandBold = Typeface.createFromAsset(AppController
+				.getInstance().getAssets(), "fonts/dinroundweb.ttf");
+		toolbarTitle.setTypeface(khandBold);
 		setSupportActionBar(toolbar);
+		getSupportActionBar().setTitle(null);
 		getSupportActionBar().setElevation(0);
+
+		// Update the action bar title with the TypefaceSpan instance
+
+		// getSupportActionBar().setDisplayShowHomeEnabled(true);
+		// getSupportActionBar().setIcon(R.drawable.ic_launcher);
+
 		if (AppController.getInstance().prefs.getBoolean("first", true)) {
 			// Take to edit screen
 
